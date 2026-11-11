@@ -349,4 +349,10 @@
       Promise.all([p1, p2]).then(function () { (sbOk || fsOk) ? done() : fail(); });
     });
   });
+  /* ---- PWA: offline cache ---- */
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js", { scope: "./" }).catch(function () {});
+    });
+  }
 })();
