@@ -61,7 +61,7 @@
   });
   var input = document.querySelector("[data-search]");
   var drop = document.querySelector("[data-drop]");
-  function basePrefix() { return page === "hub" || page === "planner" || page === "404" ? "" : "../"; }
+  function basePrefix() { return slug ? "../" : ""; }
   if (input && drop) {
     var sel = -1;
     function close() { drop.hidden = true; sel = -1; }
@@ -267,9 +267,42 @@
   if (ringFg) {
     var obs = new MutationObserver(function () {
       var p = currentPct(); if (p !== null) updateRing(p);
+      if (window.smMarkRevise) window.smMarkRevise();
     });
     document.querySelectorAll(".pill[data-vid]").forEach(function (p) {
       obs.observe(p, { attributes: true, attributeFilter: ["class"] });
+    });
+  }
+
+  /* ---------- revision mode + print notes (subject pages) ---------- */
+  var revBtn = document.querySelector("[data-revise-toggle]");
+  function markRevise() {
+    if (!document.body.classList.contains("revise")) {
+      document.querySelectorAll(".topic.rev-hide").forEach(function (t) { t.classList.remove("rev-hide"); });
+      return;
+    }
+    document.querySelectorAll(".topic").forEach(function (t) {
+      var pills = t.querySelectorAll(".pill[data-vid]");
+      var done = t.querySelectorAll(".pill[data-vid].done");
+      t.classList.toggle("rev-hide", pills.length > 0 && done.length === pills.length);
+    });
+  }
+  if (revBtn) {
+    revBtn.addEventListener("click", function () {
+      var on = document.body.classList.toggle("revise");
+      revBtn.textContent = on ? "Revision mode: ON (unfinished only)" : "Revision mode: hide finished topics";
+      markRevise();
+      toast(on ? "Showing only unfinished topics" : "Showing everything");
+    });
+  }
+  window.smMarkRevise = markRevise;
+  var printBtn = document.querySelector("[data-print-notes]");
+  if (printBtn) {
+    printBtn.addEventListener("click", function () {
+      document.querySelectorAll("details.note").forEach(function (d) { d.open = true; });
+      document.body.classList.add("printing-notes");
+      window.print();
+      setTimeout(function () { document.body.classList.remove("printing-notes"); }, 600);
     });
   }
 })();

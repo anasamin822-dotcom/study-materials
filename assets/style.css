@@ -705,3 +705,24 @@ a:focus-visible, button:focus-visible, summary:focus-visible, textarea:focus-vis
   .note { border: 1px solid #999; }
   .note-body { display: block !important; }
 }
+
+/* ---------- stage 2: cheat sheet, datesheet, revise ---------- */
+.cheat-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.cheat-list { columns: 1; list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; max-width: 780px; }
+.cheat-list li {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 14px; font-size: 13.5px; line-height: 1.5;
+}
+.date-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.date-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+.date-card b { font-family: var(--font-display); font-size: 18px; display: block; margin: 6px 0; }
+.date-card p { font-size: 13px; color: var(--muted); margin: 0; }
+.dc-when { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-strong); }
+body.revise .topic.rev-hide { display: none; }
+body.revise .unit:not(:has(.topic:not(.rev-hide))) { display: none; }
+@media print {
+  body.printing-notes header .cta-row, body.printing-notes .countdown, body.printing-notes .ring-wrap,
+  body.printing-notes .pills, body.printing-notes .tshare, body.printing-notes .bmk,
+  body.printing-notes .marquee, body.printing-notes .cheat-actions, body.printing-notes .progress-label,
+  body.printing-notes .type, body.printing-notes .continue-chip { display: none !important; }
+}
