@@ -89,8 +89,6 @@ a { color: inherit; }
   width: 100%; max-width: 1120px; margin: 0 auto; gap: 10px;
 }
 .nav .links { width: 100%; max-width: 1120px; margin: 0 auto; }
-  max-width: calc(100vw - 24px);
-}
 .nav .brand {
   font-family: var(--font-display); font-weight: 700; font-size: 15.5px;
   padding: 8px 16px; border-radius: 999px; text-decoration: none;
