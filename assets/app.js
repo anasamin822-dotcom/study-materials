@@ -286,14 +286,17 @@
   function loadThread(box) {
     var thread = box.querySelector("[data-thread]");
     if (!thread) return;
-    fetch(SB_URL + "?thread=eq." + threadId() + "&select=author,body,created_at&order=created_at.desc&limit=30",
-      { headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY } })
+    fetch(SB_URL.replace("/study_messages", "") + "/rpc/get_thread_messages", {
+        method: "POST",
+        headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({ p_thread: threadId() })
+      })
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (rows) {
         if (!rows.length) return;
         thread.hidden = false;
         var html = '<div class="thread-title">Your doubt thread</div>';
-        rows.reverse().forEach(function (m) {
+        rows.forEach(function (m) {
           var when = new Date(m.created_at).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
           html += '<div class="msg ' + (m.author === "helper" ? "helper" : "visitor") + '">' +
             (m.author === "helper" ? "<b>Study Materials helper</b> " : "") + escText(m.body) +
