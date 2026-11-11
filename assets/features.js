@@ -352,3 +352,17 @@
   for (var k=0;k<btns.length;k++) btns[k].addEventListener('click', function(){ apply(cur==='en'?'hi':'en'); });
   apply(cur);
 })();
+
+/* ===== question of the day (rotates by local date) ===== */
+(function(){
+  var boxes = document.querySelectorAll('[data-qotd]');
+  if (!boxes.length) return;
+  var now = new Date();
+  var start = new Date(now.getFullYear(), 0, 0);
+  var day = Math.floor((now - start) / 86400000);
+  for (var i=0;i<boxes.length;i++){
+    var items = boxes[i].querySelectorAll('[data-qotd-item]');
+    if (!items.length) continue;
+    items[day % items.length].hidden = false;
+  }
+})();

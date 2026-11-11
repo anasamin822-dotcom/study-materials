@@ -736,3 +736,13 @@ body.revise .unit:not(:has(.topic:not(.rev-hide))) { display: none; }
 /* ===== per-unit quick-read notes ===== */
 .unit-note{margin-bottom:14px;border-color:var(--acc2)}
 .unit-note summary{color:var(--acc2)}
+
+/* ===== question of the day ===== */
+.qotd-item{border:1px dashed var(--acc2);border-radius:14px;margin-bottom:10px;background:var(--surface);overflow:hidden}
+.qotd-item[hidden]{display:none}
+.qotd-item summary{cursor:pointer;padding:14px 16px;font-weight:600;font-size:.95rem;list-style:none;display:flex;gap:8px;align-items:baseline}
+.qotd-item summary::-webkit-details-marker{display:none}
+.qotd-item summary .plus{margin-left:auto;color:var(--muted);font-weight:400}
+.qotd-item[open] summary .plus{transform:rotate(45deg)}
+.qotd-tag{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);margin-left:6px}
+.qotd-ans{padding:0 16px 14px;font-size:.9rem;color:var(--muted);line-height:1.55;border-top:1px dashed var(--border);padding-top:10px;margin:0 16px 14px;padding-left:0;padding-right:0}
