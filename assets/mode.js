@@ -5,6 +5,9 @@
   var d = document.documentElement;
   var q = new URLSearchParams(location.search);
   var p = q.get("palette");
+  if (p !== "p1" && p !== "p2" && p !== "p3") {
+    try { p = localStorage.getItem("sm-palette") || "p1"; } catch (e) { p = "p1"; }
+  }
   if (p === "p1" || p === "p2" || p === "p3") d.setAttribute("data-palette", p);
   var m = q.get("mode");
   if (m !== "light" && m !== "dark") {

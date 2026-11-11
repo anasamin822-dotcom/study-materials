@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<script src="assets/mode.js?v=1794420937"></script>
-<link rel="stylesheet" href="assets/style.css?v=1794420937">
+<script src="assets/mode.js?v=1794423793"></script>
+<link rel="stylesheet" href="assets/style.css?v=1794423793">
 </head>
 <body data-page="hub">
 <div class="page-loader"><span>Study Materials <b>by Anas</b></span></div>
@@ -23,7 +23,19 @@
 <nav class="nav">
   <div class="nav-row">
     <a class="brand" href="./">Study Materials by Anas</a>
+    <div class="nav-tools">
+    <div class="nav-search">
+      <input type="search" data-search placeholder="Search topics, videos..." aria-label="Search topics and videos" autocomplete="off">
+      <div class="search-drop" data-drop hidden></div>
+    </div>
+    <div class="pal-dots" role="group" aria-label="Colour palette">
+      <button type="button" data-pal="p1" style="--dot:#FFC900" aria-label="Amber palette"></button>
+      <button type="button" data-pal="p2" style="--dot:#CDF22B" aria-label="Lime palette"></button>
+      <button type="button" data-pal="p3" style="--dot:#FF6845" aria-label="Coral palette"></button>
+    </div>
+    <span class="streak" data-streak hidden title="Day streak">&#128293;<b></b></span>
     <button class="mode-toggle" type="button" aria-label="Light/dark mode toggle" aria-pressed="false"><svg class="moon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg></button>
+    </div>
   </div>
   <div class="brand-quote">If this was helpful, order biryani for Anas without asking &#129363;</div>
   <div class="links"><a href="./subjects/discrete.html">CST-002</a><a href="./subjects/dsa.html">CST-003</a><a href="./subjects/oop.html">CST-004</a><a href="./subjects/de.html">ECT-033</a><a href="./subjects/python.html">CST-005</a><a href="./subjects/uhv.html">AHT-008</a><a href="./subjects/maths.html">AHT-003</a><a href="./subjects/chem.html">AHT-002</a></div>
@@ -116,6 +128,14 @@
 </a>
   </div>
 </section>
+<section class="section" id="saved" data-saved-section hidden>
+  <div class="section-head reveal">
+    <div class="num">SAVED</div>
+    <h2>Bookmarked <span style="color:var(--accent-strong)">videos</span></h2>
+    <p>Videos you starred, kept on this device.</p>
+  </div>
+  <div class="grid-cards" data-saved-grid></div>
+</section>
 <section class="section" id="papers">
   <div class="section-head reveal">
     <div class="num">02 &mdash; OFFICIAL PAPERS</div>
@@ -148,7 +168,9 @@
   </div>
 </footer>
 <div class="watermark">Anas</div>
-<script src="./assets/app.js?v=1794420937"></script>
+<script src="./assets/app.js?v=1794423793"></script>
+<script src="./assets/planner-data.js?v=1794423793"></script>
+<script src="./assets/features.js?v=1794423793"></script>
 
 </body>
 </html>
