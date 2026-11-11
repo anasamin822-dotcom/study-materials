@@ -732,3 +732,7 @@ body.revise .unit:not(:has(.topic:not(.rev-hide))) { display: none; }
 .lang-btn{border:1px solid var(--border);background:var(--surface);color:var(--muted);font:inherit;font-size:.72rem;font-weight:600;padding:.32rem .5rem;border-radius:999px;cursor:pointer;min-width:2.3rem}
 .lang-btn:hover{color:var(--ink);border-color:var(--acc2)}
 .lang-btn[hidden]{display:none}
+
+/* ===== per-unit quick-read notes ===== */
+.unit-note{margin-bottom:14px;border-color:var(--acc2)}
+.unit-note summary{color:var(--acc2)}
