@@ -87,7 +87,7 @@
       if (d === days - 1 && todo.length - idx > perDay) target = perDay; /* normal load, exam eve */
       while (target-- > 0 && idx < todo.length) { dayItems.push(todo[idx]); idx++; }
       var dayId = date.toISOString().slice(0, 10);
-      html += '<div class="pl-day reveal' + (isToday ? " today" : "") + '"><div class="pl-day-head">' +
+      html += '<div class="pl-day' + (isToday ? " today" : "") + '"><div class="pl-day-head">' +
         (isToday ? "Today - " : "") + fmtDay(date) +
         '<span>' + dayItems.length + (dayItems.length === 1 ? " topic" : " topics") + "</span></div><ul>";
       dayItems.forEach(function (it) {
