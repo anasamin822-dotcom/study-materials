@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palette Options - Study Material</title>
+<meta name="description" content="Light mode colour palette options for Study Material - pick one.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='sans-serif' font-weight='bold' fill='%23FFC900'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#08090B; --surface:#101216; --surface-2:#16181d; --text:#F5F3EF; --muted:#9aa0a8; --accent:#FFC900; --line:rgba(245,243,239,.09); --fd:'Space Grotesk',sans-serif; --fb:'Inter',sans-serif; --fm:'JetBrains Mono',monospace; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:var(--fb); line-height:1.6; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 18px; }
+  header { text-align:center; padding:64px 18px 30px; }
+  .kicker { display:inline-block; font-family:var(--fm); font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); border:1px solid var(--line); border-radius:999px; padding:6px 14px; background:rgba(16,18,22,.7); margin-bottom:18px; }
+  h1 { font-family:var(--fd); font-weight:700; font-size:clamp(30px,7vw,52px); letter-spacing:-.02em; }
+  h1 .a { color:var(--accent); }
+  .sub { color:var(--muted); font-size:15px; margin-top:12px; }
+  .opt { background:var(--surface); border:1px solid var(--line); border-radius:22px; padding:24px 20px; margin:26px 0 10px; }
+  .opt h2 { font-family:var(--fd); font-size:22px; font-weight:700; }
+  .opt .desc { color:var(--muted); font-size:13.5px; margin-top:6px; }
+  .swatches { display:flex; gap:10px; margin:16px 0 6px; }
+  .sw { flex:1; height:44px; border-radius:12px; border:1px solid rgba(255,255,255,.12); display:grid; place-items:center; font-family:var(--fm); font-size:11px; }
+  .links { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 18px; }
+  .links a { text-decoration:none; font-family:var(--fd); font-weight:600; font-size:13.5px; padding:10px 18px; border-radius:999px; }
+  .links .primary { background:var(--accent); color:#08090B; }
+  .links .ghost { border:1px solid var(--line); color:var(--text); }
+  .frame { border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; }
+  .frame iframe { width:100%; height:460px; border:0; display:block; }
+  .note { color:var(--muted); font-size:12.5px; font-family:var(--fm); margin-top:10px; }
+  footer { text-align:center; color:var(--muted); font-size:13px; padding:40px 18px 60px; }
+  footer a { color:var(--accent); text-decoration:none; }
+</style>
+</head>
+<body>
+<header>
+  <span class="kicker">Study Material &middot; Design Options</span>
+  <h1>Light mode <span class="a">palette chuno</span></h1>
+  <p class="sub">Teen options bane hain - sab light mode me. Jo pasand aaye uska number bata do, wahi poori site pe lag jayega. Har option me dark mode bhi ready hai (toggle aa jayega).</p>
+</header>
+<main class="wrap">
+
+  <section class="opt">
+    <h2>Option 1 - White + Yellow</h2>
+    <p class="desc">Clean white base, black text, yellow sirf buttons aur highlights pe. Ekdum bold aur premium.</p>
+    <div class="swatches">
+      <div class="sw" style="background:#F5F3EF;color:#08090B">#F5F3EF</div>
+      <div class="sw" style="background:#08090B;color:#F5F3EF">#08090B</div>
+      <div class="sw" style="background:#FFC900;color:#08090B">#FFC900</div>
+    </div>
+    <div class="links">
+      <a class="primary" href="../index.html?palette=p1&amp;mode=light">Home kholo &rarr;</a>
+      <a class="ghost" href="../subjects/dsa.html?palette=p1&amp;mode=light">Subject page</a>
+      <a class="ghost" href="../index.html?palette=p1&amp;mode=dark">Dark mode</a>
+    </div>
+    <div class="frame"><iframe src="../index.html?palette=p1&amp;mode=light" title="Option 1 preview" loading="lazy"></iframe></div>
+  </section>
+
+  <section class="opt">
+    <h2>Option 2 - Ivory + Lime</h2>
+    <p class="desc">Soft ivory base, lime green accent. Fresh aur energetic - notes padhne me halka feel.</p>
+    <div class="swatches">
+      <div class="sw" style="background:#FAF8F3;color:#08090B">#FAF8F3</div>
+      <div class="sw" style="background:#08090B;color:#FAF8F3">#08090B</div>
+      <div class="sw" style="background:#CDF22B;color:#131A06">#CDF22B</div>
+    </div>
+    <div class="links">
+      <a class="primary" href="../index.html?palette=p2&amp;mode=light" style="background:#CDF22B;color:#131A06">Home kholo &rarr;</a>
+      <a class="ghost" href="../subjects/dsa.html?palette=p2&amp;mode=light">Subject page</a>
+      <a class="ghost" href="../index.html?palette=p2&amp;mode=dark">Dark mode</a>
+    </div>
+    <div class="frame"><iframe src="../index.html?palette=p2&amp;mode=light" title="Option 2 preview" loading="lazy"></iframe></div>
+  </section>
+
+  <section class="opt">
+    <h2>Option 3 - Ivory + Teal + Coral</h2>
+    <p class="desc">Warm ivory base, teal headings aur coral buttons. Thoda classy, magazine jaisa feel.</p>
+    <div class="swatches">
+      <div class="sw" style="background:#F3EEE8;color:#17201F">#F3EEE8</div>
+      <div class="sw" style="background:#17645F;color:#FFF">#17645F</div>
+      <div class="sw" style="background:#FF6845;color:#FFF">#FF6845</div>
+    </div>
+    <div class="links">
+      <a class="primary" href="../index.html?palette=p3&amp;mode=light" style="background:#FF6845;color:#FFF">Home kholo &rarr;</a>
+      <a class="ghost" href="../subjects/dsa.html?palette=p3&amp;mode=light">Subject page</a>
+      <a class="ghost" href="../index.html?palette=p3&amp;mode=dark">Dark mode</a>
+    </div>
+    <div class="frame"><iframe src="../index.html?palette=p3&amp;mode=light" title="Option 3 preview" loading="lazy"></iframe></div>
+  </section>
+
+  <p class="note">Tip: "Home kholo" aur "Subject page" dono khol ke dekho - poora flow usi palette me chalega. Jo number final ho (1, 2 ya 3) bata do, wahi default ban jayega + light/dark toggle bhi aa jayega.</p>
+</main>
+<footer>Made with &#10084;&#65039; by Anas &middot; <a href="../index.html">Study Material home</a></footer>
+</body>
+</html>
