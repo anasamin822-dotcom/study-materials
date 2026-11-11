@@ -52,6 +52,21 @@
     t.innerHTML += t.innerHTML;
   });
 
+  /* ---- light/dark mode toggle (persisted) ---- */
+  var mt = document.querySelector(".mode-toggle");
+  if (mt) {
+    var syncToggle = function () {
+      mt.setAttribute("aria-pressed", document.documentElement.getAttribute("data-mode") === "dark" ? "true" : "false");
+    };
+    mt.addEventListener("click", function () {
+      var next = document.documentElement.getAttribute("data-mode") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-mode", next);
+      try { localStorage.setItem("sm-mode", next); } catch (e) {}
+      syncToggle();
+    });
+    syncToggle();
+  }
+
   /* ---- watched-progress: localStorage per page ---- */
   var pageKey = "ciehub:" + (document.body.getAttribute("data-page") || location.pathname);
   var saved = {};
