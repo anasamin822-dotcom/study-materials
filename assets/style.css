@@ -15,8 +15,8 @@
    ============================================================ */
 
 :root {
-  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
   --radius: 18px;
   --nav-h: 64px;
@@ -85,15 +85,26 @@ a { color: inherit; }
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
 }
 .nav .nav-row {
-  display: flex; align-items: center; justify-content: space-between;
+  position: relative; display: flex; align-items: center; justify-content: center;
   width: 100%; max-width: 1120px; margin: 0 auto; gap: 10px;
 }
+.nav .nav-spacer { flex: 1; visibility: hidden; }
+.nav .nav-row .mode-toggle { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+.nav .nav-row .mode-toggle:hover { transform: translateY(-50%) scale(1.06); }
 .nav .links { width: 100%; max-width: 1120px; margin: 0 auto; }
 .nav .brand {
-  font-family: var(--font-display); font-weight: 700; font-size: 15.5px;
-  padding: 8px 16px; border-radius: 999px; text-decoration: none;
+  position: relative; overflow: hidden;
+  font-family: var(--font-display); font-weight: 800; font-size: 15.5px; letter-spacing: -.01em;
+  padding: 8px 18px; border-radius: 999px; text-decoration: none;
   background: var(--accent); color: var(--accent-ink); white-space: nowrap;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent);
 }
+.nav .brand::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,.55), transparent);
+  animation: brand-shine 4.5s ease-in-out infinite;
+}
+@keyframes brand-shine { 0%, 55% { left: -60%; } 85%, 100% { left: 130%; } }
 .nav .links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
 .nav .links::-webkit-scrollbar { display: none; }
 .nav .links a {
@@ -104,7 +115,27 @@ a { color: inherit; }
 .nav .links a:hover, .nav .links a.active { color: var(--text); background: var(--surface-2); }
 
 /* ---------- hero (Supahero + Aceternity spotlight) ---------- */
-.hero { position: relative; z-index: 1; padding: 150px 20px 60px; text-align: center; }
+.hero { position: relative; z-index: 1; padding: 150px 20px 60px; text-align: center; overflow: hidden; }
+.aurora { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; opacity: .5; }
+.aurora.a1 {
+  width: 420px; height: 420px; top: -160px; left: 8%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 38%, transparent), transparent 70%);
+  animation: aurora-drift 14s ease-in-out infinite alternate;
+}
+.aurora.a2 {
+  width: 360px; height: 360px; top: -100px; right: 6%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 26%, transparent), transparent 70%);
+  animation: aurora-drift 18s ease-in-out infinite alternate-reverse;
+}
+@keyframes aurora-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(60px, 46px) scale(1.15); }
+}
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 60;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 60%, transparent);
+}
 .spotlight {
   position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
   width: min(760px, 92vw); height: 460px; pointer-events: none;
@@ -273,17 +304,80 @@ a { color: inherit; }
   color: var(--accent-strong); margin-bottom: 8px;
 }
 
-/* ---------- footer (Footer.design - giant type) ---------- */
-footer { position: relative; z-index: 1; margin-top: 90px; border-top: 1px solid var(--line); }
-.footer-giant {
-  font-family: var(--font-display); font-weight: 700; text-align: center;
-  font-size: clamp(80px, 18vw, 240px); line-height: .95; letter-spacing: -.02em;
-  color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 35%, transparent);
-  user-select: none; padding: 40px 0 0;
+/* ---------- countdown (3D flip-style cards) ---------- */
+.countdown { margin: 34px auto 0; max-width: 460px; }
+.cd-label {
+  font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
 }
+.cd-label span { color: var(--accent-strong); font-weight: 600; }
+.cd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.cd-card {
+  position: relative; border-radius: 16px; padding: 14px 6px 10px;
+  background: linear-gradient(160deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgba(0,0,0,.22), inset 0 2px 2px rgba(255,255,255,.09), inset 0 -6px 14px rgba(0,0,0,.16);
+  transform: perspective(500px) rotateX(8deg);
+  transition: transform .25s ease;
+}
+.countdown:hover .cd-card { transform: perspective(500px) rotateX(0deg) translateY(-3px); }
+.cd-card b {
+  display: block; font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(24px, 6vw, 34px); line-height: 1; color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.cd-card b.tick { animation: cd-pop .3s ease; }
+@keyframes cd-pop { 40% { transform: scale(1.18); color: var(--accent-strong); } }
+.cd-card small {
+  display: block; margin-top: 5px; font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ---------- footer quote + chat box ---------- */
+footer { position: relative; z-index: 1; margin-top: 90px; border-top: 1px solid var(--line); }
+.footer-quote {
+  font-family: var(--font-display); font-weight: 800; text-align: center;
+  font-size: clamp(24px, 5.4vw, 46px); letter-spacing: -.02em; line-height: 1.15;
+  padding: 54px 20px 10px; max-width: 900px; margin: 0 auto;
+  background: linear-gradient(92deg, var(--text) 20%, var(--accent-strong) 50%, var(--text) 80%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: quote-flow 7s ease-in-out infinite;
+}
+@keyframes quote-flow { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+.chat-box {
+  max-width: 520px; margin: 34px auto 0; padding: 0 20px;
+}
+.chat-title {
+  font-family: var(--font-display); font-weight: 700; font-size: 16px; margin-bottom: 10px;
+}
+.chat-form {
+  display: flex; gap: 8px; align-items: flex-end;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+  padding: 10px; box-shadow: 0 12px 34px rgba(0,0,0,.18);
+  transition: border-color .2s, box-shadow .2s;
+}
+.chat-form:focus-within { border-color: color-mix(in srgb, var(--accent) 55%, transparent); box-shadow: 0 12px 34px color-mix(in srgb, var(--accent) 18%, transparent); }
+.chat-form textarea {
+  flex: 1; resize: none; border: 0; outline: 0; background: transparent;
+  color: var(--text); font-family: var(--font-body); font-size: 14.5px; line-height: 1.5;
+  padding: 8px 6px; max-height: 120px;
+}
+.chat-form textarea::placeholder { color: var(--muted); }
+.chat-send {
+  flex: none; border: 0; cursor: pointer; border-radius: 12px;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  padding: 10px 16px; background: var(--accent); color: var(--accent-ink);
+  transition: transform .18s, box-shadow .18s;
+}
+.chat-send:hover { transform: translateY(-2px); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 40%, transparent); }
+.chat-send:disabled { opacity: .55; cursor: wait; transform: none; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.chat-status { min-height: 20px; margin-top: 8px; font-size: 13px; color: var(--muted); text-align: center; }
+.chat-status.ok { color: var(--accent-strong); }
 .footer-row {
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
-  max-width: 1120px; margin: 0 auto; padding: 22px 20px 30px;
+  max-width: 1120px; margin: 0 auto; padding: 26px 20px 30px;
   color: var(--muted); font-size: 13px;
 }
 .footer-row a { color: var(--accent-strong); text-decoration: none; }
@@ -326,4 +420,5 @@ footer { position: relative; z-index: 1; margin-top: 90px; border-top: 1px solid
   .marquee .track { animation: none; }
   html { scroll-behavior: auto; }
   .card, .pill, .btn { transition: none; }
+  .aurora, .nav .brand::after, .footer-quote { animation: none; }
 }
