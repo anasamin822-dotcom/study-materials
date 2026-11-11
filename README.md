@@ -1,6 +1,6 @@
-# Anas Study Hub - CIE 1 & CIE 2 ke saare subjects
+# Study Material - saare subjects, ek jagah
 
-Ek hi website, har subject ka alag section. Har topic ke saath **verified YouTube videos** (first preference), aur jahan video nahi mila wahan **ekdum simple Hinglish notes** (khud likhe hue, chhote examples ke saath).
+Ek hi website, har subject ka alag section - poora syllabus unit-wise (Unit 1 se Unit 5). Har topic ke saath **verified YouTube videos** (first preference), aur jahan video nahi mila wahan **ekdum simple Hinglish notes** (khud likhe hue, chhote examples ke saath).
 
 Live: **https://anasamin822-dotcom.github.io/study-materials/**
 
@@ -8,7 +8,7 @@ Live: **https://anasamin822-dotcom.github.io/study-materials/**
 
 | Section | Subject | Code |
 |---|---|---|
-| Sem III (CIE 1 = Units 1-2, CIE 2 = Units 3-5) | Discrete Structure | CST-002 |
+| Sem III | Discrete Structure | CST-002 |
 | | Data Structures & Algorithms | CST-003 |
 | | Object Oriented Programming (C++) | CST-004 |
 | | Digital Electronics | ECT-033 |
@@ -19,7 +19,7 @@ Live: **https://anasamin822-dotcom.github.io/study-materials/**
 
 ## Features
 
-- 437 hand-verified YouTube video links (playlist + exact video numbers checked via yt-dlp)
+- 440+ hand-verified YouTube video links (playlist + exact video numbers checked via yt-dlp)
 - Progress tracking (tick videos you watched, saved in localStorage)
 - Self-taught notes for gap topics (simple Hinglish, analogies, tiny examples)
 - Mobile-first, `prefers-reduced-motion` respected, zero frameworks, zero cost
