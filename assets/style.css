@@ -726,3 +726,4 @@ body.revise .unit:not(:has(.topic:not(.rev-hide))) { display: none; }
   body.printing-notes .marquee, body.printing-notes .cheat-actions, body.printing-notes .progress-label,
   body.printing-notes .type, body.printing-notes .continue-chip { display: none !important; }
 }
+.kbd-help[hidden] { display: none !important; }
