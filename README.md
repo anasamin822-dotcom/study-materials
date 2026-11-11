@@ -22,6 +22,7 @@ Live: **https://anasamin822-dotcom.github.io/study-materials/**
 - 440+ hand-verified YouTube video links (playlist + exact video numbers checked via yt-dlp)
 - Progress tracking (tick videos you watched, saved in localStorage)
 - Self-taught notes for gap topics (simple Hinglish, analogies, tiny examples)
+- Light/dark mode toggle (saved in localStorage); palette: white #F5F3EF / black #08090B / yellow #FFC900
 - Mobile-first, `prefers-reduced-motion` respected, zero frameworks, zero cost
 
 ## UI/UX inspiration (21 sites, standing rule)
