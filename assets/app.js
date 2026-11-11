@@ -267,10 +267,46 @@
     tickCd();
   });
 
-  /* ---- footer chat box -> FormSubmit (AJAX, honeypot-guarded) ---- */
+  /* ---- doubt box: Supabase thread + FormSubmit notify (honeypot-guarded) ---- */
+  var SB_URL = "https://xnaakovuqweqaejeablx.supabase.co/rest/v1/study_messages";
+  var SB_KEY = "sb_publishable_v4YW_hxMSNNpYGOB9ymH_w_SGlgAZyt";
+  function threadId() {
+    var t = null;
+    try { t = localStorage.getItem("sm-thread"); } catch (e) {}
+    if (!t) {
+      t = (crypto.randomUUID ? crypto.randomUUID() :
+        "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+          var r = Math.random() * 16 | 0; return (c === "x" ? r : (r & 3 | 8)).toString(16);
+        }));
+      try { localStorage.setItem("sm-thread", t); } catch (e) {}
+    }
+    return t;
+  }
+  function escText(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function loadThread(box) {
+    var thread = box.querySelector("[data-thread]");
+    if (!thread) return;
+    fetch(SB_URL + "?thread=eq." + threadId() + "&select=author,body,created_at&order=created_at.desc&limit=30",
+      { headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY } })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) {
+        if (!rows.length) return;
+        thread.hidden = false;
+        var html = '<div class="thread-title">Your doubt thread</div>';
+        rows.reverse().forEach(function (m) {
+          var when = new Date(m.created_at).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+          html += '<div class="msg ' + (m.author === "helper" ? "helper" : "visitor") + '">' +
+            (m.author === "helper" ? "<b>Study Materials helper</b> " : "") + escText(m.body) +
+            "<small>" + when + "</small></div>";
+        });
+        thread.innerHTML = html;
+      }).catch(function () {});
+  }
   document.querySelectorAll(".chat-form").forEach(function (form) {
-    var status = form.parentElement.querySelector(".chat-status");
+    var box = form.parentElement;
+    var status = box.querySelector(".chat-status");
     var btn = form.querySelector(".chat-send");
+    loadThread(box);
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var msg = form.message.value.trim();
@@ -280,25 +316,37 @@
       }
       btn.disabled = true; status.textContent = "Sending..."; status.className = "chat-status";
       var email = (form.email && form.email.value || "").trim();
-      fetch("https://formsubmit.co/ajax/ea3d39c1c06bc783ddf0ca43491dd14d", {
+      var sbOk = false, fsOk = false;
+      var done = function () {
+        form.reset();
+        status.textContent = "Sent! Anas will see it." + (sbOk ? " Replies will appear below on this device." : "");
+        status.className = "chat-status ok";
+        btn.disabled = false;
+        if (sbOk) setTimeout(function () { loadThread(box); }, 600);
+      };
+      var fail = function () {
+        status.textContent = "Could not send - check your connection and try again.";
+        status.className = "chat-status";
+        btn.disabled = false;
+      };
+      var p1 = fetch(SB_URL, {
+        method: "POST",
+        headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify({ thread: threadId(), author: "visitor", body: msg.slice(0, 2000) })
+      }).then(function (r) { sbOk = r.ok; }).catch(function () {});
+      var p2 = fetch("https://formsubmit.co/ajax/ea3d39c1c06bc783ddf0ca43491dd14d", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
           _subject: "Study Materials site - doubt/message",
           message: msg,
           reply_email: email || "(not given)",
+          thread: threadId(),
           page: location.pathname,
           _captcha: "false"
         })
-      }).then(function (r) {
-        if (!r.ok) throw new Error("bad status");
-        form.reset();
-        status.textContent = "Sent! Anas will see it.";
-        status.className = "chat-status ok";
-      }).catch(function () {
-        status.textContent = "Could not send - check your connection and try again.";
-        status.className = "chat-status";
-      }).finally(function () { btn.disabled = false; });
+      }).then(function (r) { fsOk = r.ok; }).catch(function () {});
+      Promise.all([p1, p2]).then(function () { (sbOk || fsOk) ? done() : fail(); });
     });
   });
 })();
