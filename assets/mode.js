@@ -10,6 +10,6 @@
   if (m !== "light" && m !== "dark") {
     try { m = localStorage.getItem("sm-mode"); } catch (e) {}
   }
-  if (m !== "light" && m !== "dark") m = "dark";
+  if (m !== "light" && m !== "dark") m = "light";
   d.setAttribute("data-mode", m);
 })();
