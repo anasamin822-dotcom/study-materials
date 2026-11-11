@@ -92,6 +92,10 @@ a { color: inherit; }
 .nav .nav-row .mode-toggle { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
 .nav .nav-row .mode-toggle:hover { transform: translateY(-50%) scale(1.06); }
 .nav .links { width: 100%; max-width: 1120px; margin: 0 auto; }
+.nav .brand-quote {
+  width: 100%; max-width: 1120px; margin: -2px auto 0; text-align: center;
+  font-size: 11px; color: var(--muted); line-height: 1.3;
+}
 .nav .brand {
   position: relative; overflow: hidden;
   font-family: var(--font-display); font-weight: 800; font-size: 15.5px; letter-spacing: -.01em;
