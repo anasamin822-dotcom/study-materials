@@ -727,3 +727,8 @@ body.revise .unit:not(:has(.topic:not(.rev-hide))) { display: none; }
   body.printing-notes .type, body.printing-notes .continue-chip { display: none !important; }
 }
 .kbd-help[hidden] { display: none !important; }
+
+/* ===== notes EN/Hinglish toggle ===== */
+.lang-btn{border:1px solid var(--border);background:var(--surface);color:var(--muted);font:inherit;font-size:.72rem;font-weight:600;padding:.32rem .5rem;border-radius:999px;cursor:pointer;min-width:2.3rem}
+.lang-btn:hover{color:var(--ink);border-color:var(--acc2)}
+.lang-btn[hidden]{display:none}

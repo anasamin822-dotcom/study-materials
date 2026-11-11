@@ -332,3 +332,23 @@
     } else show();
   })();
 })();
+
+/* ===== notes language toggle (EN / Hinglish) ===== */
+(function(){
+  var btns = document.querySelectorAll('[data-lang-toggle]');
+  if (!btns.length) return;
+  if (!document.querySelector('.note-body.lang-hi')) return;
+  for (var i=0;i<btns.length;i++) btns[i].hidden = false;
+  var cur = 'en';
+  try { cur = localStorage.getItem('sm-lang') || 'en'; } catch(e){}
+  function apply(l){
+    cur = l;
+    try { localStorage.setItem('sm-lang', l); } catch(e){}
+    var ens = document.querySelectorAll('.lang-en'), his = document.querySelectorAll('.lang-hi');
+    for (var i=0;i<ens.length;i++) ens[i].hidden = (l==='hi');
+    for (var i=0;i<his.length;i++) his[i].hidden = (l!=='hi');
+    for (var j=0;j<btns.length;j++) btns[j].textContent = (l==='hi') ? 'HI' : 'EN';
+  }
+  for (var k=0;k<btns.length;k++) btns[k].addEventListener('click', function(){ apply(cur==='en'?'hi':'en'); });
+  apply(cur);
+})();
