@@ -315,7 +315,6 @@
         form.reset(); status.textContent = "Sent! Anas will see it."; status.className = "chat-status ok"; return;
       }
       btn.disabled = true; status.textContent = "Sending..."; status.className = "chat-status";
-      var email = (form.email && form.email.value || "").trim();
       var sbOk = false, fsOk = false;
       var done = function () {
         form.reset();
@@ -340,7 +339,6 @@
         body: JSON.stringify({
           _subject: "Study Materials site - doubt/message",
           message: msg,
-          reply_email: email || "(not given)",
           thread: threadId(),
           page: location.pathname,
           _captcha: "false"
