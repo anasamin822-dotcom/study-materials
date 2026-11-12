@@ -13,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<script src="../assets/mode.js?v=1794459302"></script>
-<link rel="stylesheet" href="../assets/style.css?v=1794459302">
+<script src="../assets/mode.js?v=1794459758"></script>
+<link rel="stylesheet" href="../assets/style.css?v=1794459758">
 </head>
 <body data-page="oop" data-slug="oop" data-name="Object Oriented Programming">
 <div class="page-loader"><span>Study Materials <b>by Anas</b></span></div>
@@ -156,11 +156,20 @@
   <div class="cheat-actions">
     <button class="btn btn-ghost" type="button" data-revise-toggle>Revision mode: hide finished topics</button>
     <button class="btn btn-ghost" type="button" data-print-notes>Print notes / save as PDF</button>
-    <a class="btn btn-ghost" href="../notes/oop-complete-notes.pdf" download>Download complete notes (PDF)</a>
   </div>
   <ul class="cheat-list reveal"><li>4 pillars: encapsulation, abstraction, inheritance, polymorphism.</li><li>Class = blueprint; object = instance. Members are private by default in C++.</li><li>Constructor: same name as class, no return type. Types: default, parameterized, copy. Destructor: ~Class(), called at scope end.</li><li>Constructor overloading = same name, different parameter lists (compile-time).</li><li>Function overloading: same name, different signatures - resolved at compile time (static polymorphism).</li><li>Operator overloading: redefine operators for objects, e.g. operator+; cannot change arity or precedence.</li><li>Inheritance types: single, multiple, multilevel, hierarchical, hybrid. Access: public inheritance keeps public members public.</li><li>Virtual function: resolved at run time via vtable - this is dynamic polymorphism.</li><li>Pure virtual (= 0) makes a class abstract: cannot be instantiated.</li><li>Overriding: same signature in derived class; needs virtual in base for run-time dispatch.</li><li>Template: generic code - template &lt;class T&gt; works for many types, checked at compile time.</li><li>Exception handling: try { throw } catch(type) { }. catch(...) catches anything.</li><li>File streams: ifstream (read), ofstream (write), fstream (both). Always check .is_open().</li><li>Namespaces avoid name clashes; std is the standard one. using namespace std brings it in.</li><li>STL: containers (vector, list, map, set), iterators, algorithms (sort, find). vector = dynamic array.</li></ul>
 </section>
     
+<section class="section">
+  <div class="section-head reveal">
+    <div class="num">FULL NOTES PDF</div>
+    <h2>All 5 units, <span style="color:var(--accent-strong)">one PDF</span></h2>
+    <p>Every unit's notes in a single file - easy English, matched to the syllabus. Save it for offline revision.</p>
+  </div>
+  <div class="cheat-actions">
+    <a class="btn btn-primary" href="../notes/oop-complete-notes.pdf" download>&#11015; Download complete notes (PDF)</a>
+  </div>
+</section>
 </main>
 <footer>
   <div class="footer-quote">&ldquo;First year back, 2nd year back to back??&rdquo;</div>
@@ -182,9 +191,9 @@
   </div>
 </footer>
 <div class="watermark">Anas</div>
-<script src="../assets/app.js?v=1794459302"></script>
-<script src="../assets/planner-data.js?v=1794459302"></script>
-<script src="../assets/features.js?v=1794459302"></script>
+<script src="../assets/app.js?v=1794459758"></script>
+<script src="../assets/planner-data.js?v=1794459758"></script>
+<script src="../assets/features.js?v=1794459758"></script>
 
 </body>
 </html>
